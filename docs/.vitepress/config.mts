@@ -1,8 +1,9 @@
 import { defineConfig } from 'vitepress'
-import { resolve } from 'path'
+const isProd = process.env.NODE_ENV === 'production'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: isProd ? '/cesium-scene/' : '/',
   title: "Azusa's Playground",
   description: "A VitePress Site",
   themeConfig: {
