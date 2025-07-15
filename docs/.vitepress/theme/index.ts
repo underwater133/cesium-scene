@@ -3,6 +3,7 @@ import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import 'cesium/Build/Cesium/Widgets/widgets.css'
 
 export default {
   extends: DefaultTheme,

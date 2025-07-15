@@ -19,32 +19,32 @@ const router = useRouter()
 const items = [
   {
     title: '组件1',
-    cover: '/images/1.png',
+    cover: '/public/images/1.png',
     path: '/scene/test'
   },
   {
     title: '组件2',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   },
   {
     title: '组件3',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   },
   {
     title: '组件2',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   },
   {
     title: '组件3',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   },
   {
     title: '组件2',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   },
   {
     title: '组件3',
-    cover: '/images/1.png'
+    cover: '/public/images/1.png'
   }
 ]
 

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import { resolve } from 'path'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -24,5 +25,20 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
-  }
+  },
+  // vite: {
+  //   resolve: {
+  //     alias: {
+  //       cesium: resolve(__dirname, '../../node_modules/cesium/Source')
+  //     }
+  //   },
+  //   define: {
+  //     CESIUM_BASE_URL: JSON.stringify('/cesium/')
+  //   },
+  //   build: {
+  //     rollupOptions: {
+  //       external: ['fs'] // 防止打包时引入 Node.js 模块
+  //     }
+  //   }
+  // }
 })
