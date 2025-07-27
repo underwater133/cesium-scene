@@ -8,6 +8,7 @@
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
-    "cesium": "1.99"
+    "cesium": "1.99",
+    "dat.gui": "^0.7.9"
   }
 }

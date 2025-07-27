@@ -7,7 +7,7 @@
       <div class="cover">
         <img :src="item.cover" :alt="item.title" />
       </div>
-      <h3>{{ item.title + index }}</h3>
+      <h3>{{ item.title }}</h3>
     </div>
   </div>
 </template>
@@ -23,7 +23,8 @@ const items = [
     path: '/scene/test'
   },
   {
-    title: '组件2',
+    title: '3DTiles查看器',
+    path: '/scene/3DTiles查看器',
     cover: '/public/images/1.png'
   },
   {
