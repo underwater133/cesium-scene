@@ -8,10 +8,10 @@ export default defineConfig({
   description: "A VitePress Site",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
-    ],
+    // nav: [
+    //   { text: 'Home', link: '/' },
+    //   { text: 'Examples', link: '/markdown-examples' }
+    // ],
 
     sidebar: [
       {
@@ -24,9 +24,14 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/underwater133/cesium-scene' }
     ]
   },
+  head: [
+    ['link', { rel: 'icon', href: '/images/doro.png' }]
+  ],
+  // plugins: [
+  //   require('./plugins/cesium-api-docs')
   // vite: {
   //   resolve: {
   //     alias: {
