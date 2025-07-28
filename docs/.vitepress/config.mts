@@ -28,7 +28,7 @@ export default defineConfig({
     ]
   },
   head: [
-    ['link', { rel: 'icon', href: '/images/doro.png' }]
+    ['link', { rel: 'icon', href: `${isProd ? '/cesium-scene' : ''}/images/doro.png` }]
   ],
   // plugins: [
   //   require('./plugins/cesium-api-docs')

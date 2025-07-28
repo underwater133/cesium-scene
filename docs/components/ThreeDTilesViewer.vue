@@ -13,7 +13,6 @@ import { onMounted, onUnmounted, reactive } from "vue";
 import { scale, rotate, moveModel } from "../js/cesiumTools.js";
 import useCesium from '../js/useCesium.js'
 import * as Cesium from "cesium";
-import * as dat from 'dat.gui';
 
 let viewer = null;
 let tileset = null;
@@ -36,7 +35,9 @@ const form = reactive({
     rotateZ: 0
 });
 
-const initGUI = () => {
+const initGUI = async () => {
+    if (typeof window === 'undefined') return;
+    const dat = (await import('dat.gui')).default || (await import('dat.gui'));
     gui = new dat.GUI();
     gui.domElement.style.position = 'absolute';
     gui.domElement.style.top = '10px';
@@ -127,7 +128,6 @@ const initGUI = () => {
 
     actionsFolder.add(actions, 'locateModel').name('定位模型');
     actionsFolder.add(actions, 'resetModel').name('重置模型');
-    // actionsFolder.add(actions, 'applyTransform').name('应用变换');
     actionsFolder.open();
 }
 
@@ -159,9 +159,10 @@ const setLocation = () => {
 }
 
 const load3DTiles = () => {
+    const baseUrl = import.meta.env.BASE_URL;
     tileset = new Cesium.Cesium3DTileset(
         {
-            url: "/public/3dtiles/Quaint_Village/tileset.json",
+            url: baseUrl + "3dtiles/Quaint_Village/tileset.json",
             maximumScreenSpaceError: 1 // 默认16  值越大在同等距离下模型就越模糊，值越小则越清晰
         }
     );

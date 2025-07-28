@@ -16,36 +16,37 @@
 import { useRouter } from 'vitepress'
 
 const router = useRouter()
+const baseUrl = import.meta.env.BASE_URL;
 const items = [
   {
     title: '组件1',
-    cover: '/public/images/1.png',
-    path: '/scene/test'
+    cover: baseUrl + 'images/1.png',
+    path: baseUrl + 'scene/test'
   },
   {
     title: '3DTiles查看器',
-    path: '/scene/3DTiles查看器',
-    cover: '/public/images/3dTilesViewer.png'
+    path: baseUrl + 'scene/3DTiles查看器',
+    cover: baseUrl + 'images/3dTilesViewer.png'
   },
   {
     title: '组件3',
-    cover: '/public/images/1.png'
+    cover: baseUrl + 'images/1.png'
   },
   {
     title: '组件2',
-    cover: '/public/images/1.png'
+    cover: baseUrl + 'images/1.png'
   },
   {
     title: '组件3',
-    cover: '/public/images/1.png'
+    cover: baseUrl + 'images/1.png'
   },
   {
     title: '组件2',
-    cover: '/public/images/1.png'
+    cover: baseUrl + 'images/1.png'
   },
   {
     title: '组件3',
-    cover: '/public/images/1.png'
+    cover: baseUrl + 'images/1.png'
   }
 ]
 

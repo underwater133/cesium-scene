@@ -5,6 +5,8 @@ import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import 'cesium/Build/Cesium/Widgets/widgets.css'
 
+const isProd = process.env.NODE_ENV === 'production';
+
 export default {
   extends: DefaultTheme,
   Layout: () => {
