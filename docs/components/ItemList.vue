@@ -25,7 +25,7 @@ const items = [
   {
     title: '3DTiles查看器',
     path: '/scene/3DTiles查看器',
-    cover: '/public/images/1.png'
+    cover: '/public/images/3dTilesViewer.png'
   },
   {
     title: '组件3',

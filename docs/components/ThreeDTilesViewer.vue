@@ -2,9 +2,9 @@
     <div id="cesiumContainer" style="width: 100vw; height: 100vh;"></div>
     <div class="click-info">
         <p>点击坐标</p>
-        <p>经度：{{ clickPosition.longitude }}</p>
-        <p>纬度：{{ clickPosition.latitude }}</p>
-        <button class="set-location-btn" @click="setLocation">赋值</button>
+        <p>经度：<br />{{ clickPosition.longitude }}</p>
+        <p>纬度：<br />{{ clickPosition.latitude }}</p>
+        <button class="set-location-btn" @click="setLocation">设置模型位置</button>
     </div>
 </template>
 
@@ -39,26 +39,23 @@ const form = reactive({
 const initGUI = () => {
     gui = new dat.GUI();
     gui.domElement.style.position = 'absolute';
-    gui.domElement.style.top = '80px';
+    gui.domElement.style.top = '10px';
     gui.domElement.style.left = '10px';
 
     // 位置控制
     const positionFolder = gui.addFolder('位置控制');
     positionFolder.add(form, 'longitude', -180, 180, 0.000001).name('经度').onChange(() => {
         if (tileset) {
-            tileset.modelMatrix = moveModel(tileset, form.longitude, form.latitude, form.height, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
     positionFolder.add(form, 'latitude', -90, 90, 0.000001).name('纬度').onChange(() => {
         if (tileset) {
-            tileset.modelMatrix = moveModel(tileset, form.longitude, form.latitude, form.height, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
     positionFolder.add(form, 'height', 0, 10000, 1).name('高度').onChange(() => {
         if (tileset) {
-            tileset.modelMatrix = moveModel(tileset, form.longitude, form.latitude, form.height, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
@@ -68,7 +65,6 @@ const initGUI = () => {
     const scaleFolder = gui.addFolder('缩放控制');
     scaleFolder.add(form, 'scale', 0.1, 10, 0.1).name('缩放').onChange(() => {
         if (tileset) {
-            scale(tileset, form.scale, form.scale, form.scale, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
@@ -78,19 +74,16 @@ const initGUI = () => {
     const rotationFolder = gui.addFolder('旋转控制');
     rotationFolder.add(form, 'rotateX', 0, 360, 1).name('X轴旋转').onChange(() => {
         if (tileset) {
-            rotate(tileset, form.rotateX, form.rotateY, form.rotateZ, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
     rotationFolder.add(form, 'rotateY', 0, 360, 1).name('Y轴旋转').onChange(() => {
         if (tileset) {
-            rotate(tileset, form.rotateX, form.rotateY, form.rotateZ, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
     rotationFolder.add(form, 'rotateZ', 0, 360, 1).name('Z轴旋转').onChange(() => {
         if (tileset) {
-            rotate(tileset, form.rotateX, form.rotateY, form.rotateZ, originCenter, originMatrix);
             actions.applyTransform();
         }
     });
@@ -102,13 +95,10 @@ const initGUI = () => {
         locateModel: () => {
             if (tileset) {
                 viewer.zoomTo(tileset);
-            } else {
-                alert("请先选择模型");
             }
         },
         resetModel: () => {
             if (!tileset) {
-                alert("请先选择模型");
                 return;
             }
             tileset.boundingSphere.center = Cesium.clone(originCenter, true);
@@ -127,7 +117,6 @@ const initGUI = () => {
         },
         applyTransform: () => {
             if (!tileset) {
-                alert("请先选择模型");
                 return;
             }
             tileset.modelMatrix = moveModel(tileset, form.longitude, form.latitude, form.height, originCenter, originMatrix);
@@ -158,6 +147,12 @@ const initHandlers = () => {
 const setLocation = () => {
     form.longitude = clickPosition.longitude;
     form.latitude = clickPosition.latitude;
+    if (!tileset) {
+        return;
+    }
+    tileset.modelMatrix = moveModel(tileset, form.longitude, form.latitude, form.height, originCenter, originMatrix);
+    scale(tileset, form.scale, form.scale, form.scale);
+    rotate(tileset, form.rotateX, form.rotateY, form.rotateZ);
     if (gui) {
         gui.updateDisplay();
     }
@@ -193,7 +188,7 @@ const load3DTiles = () => {
         initGUI();
         initHandlers();
     });
-    
+
 }
 
 onMounted(() => {
@@ -212,8 +207,8 @@ onUnmounted(() => {
 <style scoped>
 .click-info {
     position: absolute;
-    top: 80px;
-    right: 10px;
+    top: 400px;
+    left: 10px;
     width: 200px;
     background: rgba(0, 0, 0, 0.7);
     padding: 15px;
@@ -246,19 +241,24 @@ onUnmounted(() => {
 .dg.main.a {
     width: 300px !important;
 }
+
 .dg .property-name {
     width: 60px !important;
 }
+
 .dg .slider {
     width: 50% !important;
 }
+
 .dg .c {
     width: 70% !important;
 }
+
 .dg .c input {
     width: 100px !important;
     height: 19px;
 }
+
 .close-button {
     width: 300px !important;
 }
