@@ -26,11 +26,12 @@ const items = [
   {
     title: '3DTiles查看器',
     path: baseUrl + 'scene/3DTiles查看器',
-    cover: baseUrl + 'images/3dTilesViewer.png'
+    cover: baseUrl + 'images/3dTilesViewer.jpg'
   },
   {
-    title: '组件3',
-    cover: baseUrl + 'images/1.png'
+    title: '飞线效果',
+    path: baseUrl + 'scene/飞线效果',
+    cover: baseUrl + 'images/flyLine.jpg'
   },
   {
     title: '组件2',
