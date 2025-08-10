@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "cesium": "1.99",
+    "cesium-navigation-es6": "^3.0.9",
     "dat.gui": "^0.7.9"
   }
 }
