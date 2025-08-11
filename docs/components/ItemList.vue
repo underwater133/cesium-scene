@@ -33,13 +33,15 @@ const items = [
     path: baseUrl + 'scene/飞线效果',
     cover: baseUrl + 'images/flyLine.jpg'
   },
+  // {
+  //   title: '粒子流线',
+  //   path: baseUrl + 'scene/粒子流线',
+  //   cover: baseUrl + 'images/1.png'
+  // },
   {
-    title: '组件2',
-    cover: baseUrl + 'images/1.png'
-  },
-  {
-    title: '组件3',
-    cover: baseUrl + 'images/1.png'
+    title: '相机漫游',
+    path: baseUrl + 'scene/相机漫游',
+    cover: baseUrl + 'images/roaming.jpg'
   },
   {
     title: '组件2',

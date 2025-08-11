@@ -76,7 +76,6 @@ class FlyLine {
     clear() {
         this.flyLines.removeAll();
         this.viewer.scene.primitives.remove(this.flyLines);
-        console.log(this.flyLines, this.viewer.scene.primitives)
     }
     
 }
